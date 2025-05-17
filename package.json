@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon src/index.ts"
+    "start:dev": "nodemon src/index.ts",
+    "create:migration": "npx knex migrate:make",
+    "run:migrations": "npx knex migrate:latest",
+    "down:migration": "npx knex migrate:down"
   },
   "keywords": [],
   "author": "",

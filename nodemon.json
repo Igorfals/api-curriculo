@@ -1,0 +1,14 @@
+{
+  "verbose": true,
+  "watch": [
+    "*.css",
+    "src/**/*.ts",
+    "src/**/*.json",
+    "src/**/*.yaml"
+  ],
+  "ext": "ts js json yaml css",
+  "ignore": [
+    "src/**/*.spec.ts"
+  ],
+  "exec": "ts-node src/index.ts"
+}

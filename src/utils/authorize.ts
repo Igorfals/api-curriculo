@@ -53,6 +53,5 @@ export async function decodeAndVerifyToken(req: Request): Promise<any> {
         console.error('Erro ao verificar o token:', error);
         return null;
     }
-
 }
 

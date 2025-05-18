@@ -19,6 +19,10 @@ export class UserService {
         return knex('users').where('id', id)
     }
 
+    loginUser(email: string): Knex.QueryBuilder<UserData[]> {
+        return knex('users').where('email', email).first()
+    }
+
     setUser(obj: any): Knex.QueryBuilder<UserData[]> {
         return knex('users').insert(obj)
     }

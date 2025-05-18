@@ -4,6 +4,7 @@ import { UserCreate, UserID, userSchemaCreate, userSchemaID } from '../../schema
 import { StatusCodes } from 'http-status-codes';
 import { formatErrors } from '../../schema/error';
 import { generatePassword } from '../../utils/bcrypt';
+import { decodeAndVerifyToken } from '../../utils/authorize';
 
 const userService = new UserService();
 
@@ -22,6 +23,12 @@ export class UpdateUserController {
                 return res.status(StatusCodes.BAD_REQUEST).json({
                     mensagem: "E-mail já cadastrado!"
                 });
+            }
+            const verifyTokenID = await decodeAndVerifyToken(req)
+            if (verifyTokenID !== request.id) {
+                return res.status(StatusCodes.UNAUTHORIZED).send({
+                    message: 'Você não tem permissão para acessar este recurso!'
+                })
             }
             const hashPassword = await generatePassword(request.password)
             const userUpdate: UserID = {

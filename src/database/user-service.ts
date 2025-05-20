@@ -16,7 +16,7 @@ export class UserService {
     }
 
     getUserById(id: number): Knex.QueryBuilder<UserID[]> {
-        return knex('users').where('id', id)
+        return knex('users').where('id', id).first()
     }
 
     loginUser(email: string): Knex.QueryBuilder<UserData[]> {

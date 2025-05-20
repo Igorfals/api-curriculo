@@ -1,13 +1,12 @@
 import { Request, Response } from 'express';
 import { UserService } from '../../database/user-service';
-import { UserCreate, UserID, userSchemaCreate, userSchemaID } from '../../schema/user';
+import { UserID, userSchemaID } from '../../schema/user';
 import { StatusCodes } from 'http-status-codes';
 import { formatErrors } from '../../schema/error';
 import { generatePassword } from '../../utils/bcrypt';
 import { decodeAndVerifyToken } from '../../utils/authorize';
 
 const userService = new UserService();
-
 export class UpdateUserController {
     async updateUser(req: Request, res: Response): Promise<any> {
         try {

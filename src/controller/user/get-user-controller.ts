@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
 import { UserService } from '../../database/user-service';
 import { StatusCodes } from 'http-status-codes';
-import { decodeAndVerifyToken, decodeToken } from '../../utils/authorize';
-import { decode } from 'jsonwebtoken';
+import { decodeToken } from '../../utils/authorize';
 
 const userService = new UserService();
 

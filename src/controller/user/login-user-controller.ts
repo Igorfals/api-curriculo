@@ -9,7 +9,6 @@ import jwt from 'jsonwebtoken';
 dotenv.config();
 
 const userService = new UserService();
-
 export class LoginUserController {
     async loginUser(req: Request, res: Response): Promise<any> {
         try {

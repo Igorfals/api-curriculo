@@ -18,6 +18,12 @@ export class UpdateUserController {
                     erros: formatErrors(validatedUser.error)
                 });
             }
+            const userOldID = await userService.getUserById(request.id);
+            if (!userOldID) {
+                return res.status(StatusCodes.NOT_FOUND).json({
+                    mensagem: "Usuário não encontrado!"
+                });
+            }
             const checkUserEmail = await userService.checkUserEmail(request.email);
             if (checkUserEmail && checkUserEmail.id !== request.id) {
                 return res.status(StatusCodes.BAD_REQUEST).json({
